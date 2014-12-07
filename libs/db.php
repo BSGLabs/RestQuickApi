@@ -14,12 +14,14 @@
  	{
  		$sth = $this->link->prepare($sql);
 		$sth->execute($args);
-		return $sth->fetch(PDO::FETCH_ASSOC);
+		$data = $sth->fetch(PDO::FETCH_ASSOC);
+		return ( $data === false)? $this->link->lastInsertId() : $data;
  	}
  	public function fetchAll($sql,array $args)
  	{
  		$sth = $this->link->prepare($sql);
 		$sth->execute($args);
-		return $sth->fetchAll(PDO::FETCH_ASSOC);
+		$data = $sth->fetchAll(PDO::FETCH_ASSOC);
+		return ( $data === false)? $this->link->lastInsertId() : $data;
  	}
- } ?>
+ }

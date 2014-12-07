@@ -16,13 +16,15 @@
  	}
  	public function POST()
  	{
+        print_r($_POST);
+        
  		include 'libs/form.php';
         $form = new form();
  		if($form->check([$_POST["username"],$_POST["password"]])){
-            $this->db->fetch("insert into users(username,password) values(?,?)",[$_POST["username"],$_POST["password"]]);
-            return true;
+            return $this->db->fetch("insert into users(username,password) values(?,?)",[$_POST["username"],$_POST["password"]]);
+            
         }
-        return false;
+        return "-1";
     }
  	public function PUT()
  	{
@@ -50,4 +52,4 @@
         return false;
 
  	}
- } ?>
+ }
