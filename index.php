@@ -19,6 +19,7 @@ switch ($type) {
 	case 'POST':
     case 'PUT':
 	case "DELETE":
+	case "PATCH":
 		o($obj->$type());
 		break;
 	

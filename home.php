@@ -10,6 +10,11 @@
  		include 'libs/db.php';
  		$this->db = new db();
  	}
+    public function PATCH()
+    {
+        parse_str(file_get_contents("php://input"),$inputs);
+        return $inputs;
+    }
  	public function GET()
  	{
  		return $this->db->fetchAll("Select * from users",[]);
